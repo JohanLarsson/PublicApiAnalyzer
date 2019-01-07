@@ -8,13 +8,26 @@
 
 [![codecov.io](http://codecov.io/github/DotNetAnalyzers/PublicApiAnalyzer/coverage.svg?branch=master)](http://codecov.io/github/DotNetAnalyzers/PublicApiAnalyzer?branch=master)
 
+The purpose of this analyzer is to write the public API to two text files, PublicAPI.Unshipped.txt and PublicAPI.Shipped.txt. Add the files to source control to keep track of how the API evolves.
+
 ## Using Public API Analyzer
 
 The preferable way to use this package is to add the NuGet package [DotNetAnalyzers.PublicApiAnalyzer](http://www.nuget.org/packages/DotNetAnalyzers.PublicApiAnalyzer/)
 to the project where you want to enforce rules.
 
 The severity of individual rules may be configured using [rule set files](https://msdn.microsoft.com/en-us/library/dd264996.aspx)
-in Visual Studio 2015.
+in Visual Studio.
+
+### In development
+
+Use the code fix to update PublicAPI.Unshipped.txt.
+
+### When releasing
+
+1. Delete the contents of PublicAPI.Unshipped.txt and PublicAPI.Shipped.txt.
+2. Use the code fix to write the publid API to PublicAPI.Unshipped.txt.
+3. Cut the contents of PublicAPI.Unshipped.txt and paste it to PublicAPI.Shipped.txt.
+The result should be empty PublicAPI.Unshipped.txt and complete PublicAPI.Unshipped.txt.
 
 ## Team Considerations
 
